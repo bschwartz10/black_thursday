@@ -122,8 +122,13 @@ class SalesAnalyst
 
   def top_revenue_earners(number = 20)
     results = merchants.all.max_by(number) { |merchant| merchant.revenue }
-    binding.pry
     results
+  end
+
+  def merchants_with_pending_invoices
+    merchants.all.find_all do |merchant|
+      merchant.has_pending_invoices?
+    end
   end
 
 end

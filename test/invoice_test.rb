@@ -56,5 +56,4 @@ class InvoiceTest < Minitest::Test
     assert_equal 21067.77, invoice.total
   end
 
-
 end

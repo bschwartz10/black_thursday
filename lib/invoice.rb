@@ -41,9 +41,8 @@ class Invoice
   def is_paid_in_full?
     return false if transactions.empty?
     transactions.any? do |transaction|
-      return false if transaction.result != "success"
+      transaction.result == "success"
     end
-    return true
   end
 
   def invoice_item
@@ -56,6 +55,10 @@ class Invoice
       invoice_item = parent.parent.invoice_items.find_all_by_invoice_id(id)
       invoice_item.reduce(0) { |sum, item| sum + (item.unit_price * item.quantity) }
     end
+  end
+
+  # speculative
+  def find_by_status
   end
 
 

@@ -35,6 +35,12 @@ class Merchant
     paid_invoices.reduce(0) do |sum, invoice|
       sum + invoice.total
     end
-
   end
+
+  def has_pending_invoices?
+    invoices.any? do |invoice|
+      !invoice.is_paid_in_full?
+    end
+  end
+
 end

@@ -48,6 +48,4 @@ class InvoiceRepositoryTest < Minitest::Test
     assert_equal 3, @ir.find_all_by_date(Time.parse("2001-01-02")).count
   end
 
-
-
 end

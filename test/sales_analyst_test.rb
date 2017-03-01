@@ -98,10 +98,17 @@ class SalesAnalystTest < Minitest::Test
   end
 
   def test_top_revenue_earners
+    skip
     # assert_equal 10, @sa.top_revenue_earners(10).count
     # assert_equal 12334634, @sa.top_revenue_earners(10).first.id
     assert_equal 12335747, @sa.top_revenue_earners().last.id
 
   end
+
+  def test_merchants_with_pending_invoices
+    assert_equal 467, @sa.merchants_with_pending_invoices.count
+  end
+
+  
 
 end
