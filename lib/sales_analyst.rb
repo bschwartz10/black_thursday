@@ -105,9 +105,5 @@ class SalesAnalyst
       sum + invoice.total
     end
   end
-  #############################
-  ### Business Intelligence ###
-  #############################
-
 
 end
