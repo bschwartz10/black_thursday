@@ -99,6 +99,12 @@ class SalesAnalyst
     percentage.round(2)
   end
 
+  def total_revenue_by_date(date)
+    invoice_date = invoices.find_all_by_date(date)
+    invoice_date.reduce(0) do |sum, invoice|
+      sum + invoice.total
+    end
+  end
   #############################
   ### Business Intelligence ###
   #############################
