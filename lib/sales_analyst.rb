@@ -38,7 +38,8 @@ class SalesAnalyst
   end
 
   def average_item_price_for_merchant(merchant_id)
-    item_prices = merchants.find_by_id(merchant_id).items.map { |item| item.unit_price }
+    item_prices = merchants.find_by_id(merchant_id).items.map {
+      |item| item.unit_price }
     (item_prices.inject(:+) / item_prices.count).round(2)
   end
 
