@@ -35,7 +35,7 @@ class InvoiceRepository
   end
 
   def inspect
-    @instance.nil? ? nil : "#<#{self.class} #{@instance.size} rows>"
+    instance.nil? ? nil : "#<#{self.class} #{instance.size} rows>"
   end
 
 end
