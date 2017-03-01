@@ -134,8 +134,13 @@ class SalesAnalyst
     sorted = merchants.all.sort_by do |merchant|
       merchant.revenue
     end
-
     sorted.reverse
+  end
+
+  def merchants_with_only_one_item
+    merchants.all.find_all do |merchant|
+      merchant.has_one_item?
+    end
   end
 
 end

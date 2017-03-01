@@ -43,4 +43,8 @@ class Merchant
     end
   end
 
+  def has_one_item?
+    items.count == 1
+  end
+
 end
