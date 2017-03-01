@@ -20,7 +20,7 @@ class SalesEngineTest < Minitest::Test
     assert_instance_of ItemRepository, @se.items
   end
 
-  def test_se_invoice_method_reads_items_file
+  def test_se_invoice_method_reads_invoice_file
     assert_instance_of InvoiceRepository, @se.invoices
   end
 
