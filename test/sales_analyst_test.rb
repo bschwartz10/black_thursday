@@ -89,4 +89,8 @@ class SalesAnalystTest < Minitest::Test
     assert_equal 13.5, @sa.invoice_status(:returned)
   end
 
+  def test_total_revenue_by_date
+    assert_equal BigDecimal.new(2106777) / 100, @sa.total_revenue_by_date(Time.parse("2009-02-07"))
+  end
+
 end

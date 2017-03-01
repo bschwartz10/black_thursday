@@ -42,4 +42,12 @@ class InvoiceRepositoryTest < Minitest::Test
     assert_equal 2839, @ir.find_all_by_status("shipped").count
   end
 
+  def test_find_all_by_date
+    assert_instance_of Invoice, @ir.find_all_by_date(Time.parse("2009-02-07")).first
+    assert_equal :pending, @ir.find_all_by_date(Time.parse("2009-02-07")).first.status
+    assert_equal 3, @ir.find_all_by_date(Time.parse("2001-01-02")).count
+  end
+
+
+
 end

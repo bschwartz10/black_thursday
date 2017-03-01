@@ -14,16 +14,20 @@ class InvoiceRepository
   end
 
   def find_all_by_customer_id(customer_id)
-    @all.select { |invoice| invoice.customer_id == customer_id }
+    all.select { |invoice| invoice.customer_id == customer_id }
   end
 
   def find_all_by_merchant_id(merchant_id)
-    @all.select { |invoice| invoice.merchant_id == merchant_id}
+    all.select { |invoice| invoice.merchant_id == merchant_id}
   end
 
   def find_all_by_status(status)
     status = status.to_sym
     all.select { |invoice| invoice.status == status }
+  end
+
+  def find_all_by_date(date)
+    all.find_all { |invoice| invoice.created_at.to_date == date.to_date}
   end
 
   def inspect
