@@ -57,9 +57,4 @@ class Invoice
     end
   end
 
-  # speculative
-  def find_by_status
-  end
-
-
 end

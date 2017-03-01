@@ -117,7 +117,13 @@ class SalesAnalystTest < Minitest::Test
   end
 
   def test_merchants_with_only_one_item
+    skip
     assert_equal 243, @sa.merchants_with_only_one_item.count
+  end
+
+  def test_merchants_with_only_one_item_registered_in_month
+    assert_equal 21, @sa.merchants_with_only_one_item_registered_in_month("March").count
+    assert_equal 18, @sa.merchants_with_only_one_item_registered_in_month("June").count
   end
 
 end

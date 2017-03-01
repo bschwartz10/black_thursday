@@ -143,4 +143,10 @@ class SalesAnalyst
     end
   end
 
+  def merchants_with_only_one_item_registered_in_month(month)
+    merchants_with_only_one_item.select do |merchant|
+      merchant.created_at.strftime("%B") == month
+    end
+  end
+
 end
