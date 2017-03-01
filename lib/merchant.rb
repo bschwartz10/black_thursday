@@ -25,4 +25,16 @@ class Merchant
     end
     customer_ids.map { |id| parent.parent.customers.find_by_id(id) }.uniq
   end
+
+  def revenue
+    # merchant_invoices is an array of invoice objects
+    merchant_invoices = parent.parent.invoices.find_all_by_merchant_id(id)
+    paid_invoices = merchant_invoices.select do |invoice|
+      invoice.is_paid_in_full?
+    end
+    paid_invoices.reduce(0) do |sum, invoice|
+      sum + invoice.total
+    end
+
+  end
 end

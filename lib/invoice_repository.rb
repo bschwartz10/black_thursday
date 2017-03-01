@@ -30,6 +30,10 @@ class InvoiceRepository
     all.find_all { |invoice| invoice.created_at.to_date == date.to_date}
   end
 
+  def method_name
+    # maybe find merchant revenue per invoice or something
+  end
+
   def inspect
     @instance.nil? ? nil : "#<#{self.class} #{@instance.size} rows>"
   end

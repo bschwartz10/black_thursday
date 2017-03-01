@@ -93,4 +93,15 @@ class SalesAnalystTest < Minitest::Test
     assert_equal BigDecimal.new(2106777) / 100, @sa.total_revenue_by_date(Time.parse("2009-02-07"))
   end
 
+  def test_revenue_by_merchant
+      assert_equal 0.1263009e6, @sa.revenue_by_merchant(12335938)
+  end
+
+  def test_top_revenue_earners
+    # assert_equal 10, @sa.top_revenue_earners(10).count
+    # assert_equal 12334634, @sa.top_revenue_earners(10).first.id
+    assert_equal 12335747, @sa.top_revenue_earners().last.id
+
+  end
+
 end

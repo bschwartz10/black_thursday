@@ -46,4 +46,9 @@ class MerchantTest < Minitest::Test
     assert_instance_of Array, merchant.customers
     assert_instance_of Customer, merchant.customers.first
   end
+
+  def test_merchant_revenue
+    merchant = @se.merchants.find_by_id(12335938)
+    assert_equal 0.1263009e6, merchant.revenue
+  end
 end

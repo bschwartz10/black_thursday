@@ -3,7 +3,13 @@ require_relative 'data_analysis'
 
 class SalesAnalyst
   include DataAnalysis
-  attr_reader :sales_engine, :merchants, :items, :invoices, :invoice_items
+  attr_reader :sales_engine,
+              :merchants,
+              :items,
+              :invoices,
+              :invoice_items,
+              :transactions,
+              :customers
 
   def initialize(sales_engine)
     @sales_engine = sales_engine
@@ -11,6 +17,8 @@ class SalesAnalyst
     @items = sales_engine.items
     @invoices = sales_engine.invoices
     @invoice_items = sales_engine.invoice_items
+    @transactions = sales_engine.transactions
+    @customers = sales_engine.customers
   end
 
   # merchant and item methods
@@ -104,6 +112,17 @@ class SalesAnalyst
     invoice_date.reduce(0) do |sum, invoice|
       sum + invoice.total
     end
+  end
+
+  def revenue_by_merchant(id)
+    merchant = merchants.find_by_id(id)
+    merchant.revenue
+  end
+
+  def top_revenue_earners(number = 20)
+    results = merchants.all.max_by(number) { |merchant| merchant.revenue }
+    binding.pry
+    results
   end
 
 end
