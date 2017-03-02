@@ -1,3 +1,25 @@
+task :default => [:unit_test]
+
+task :unit_test do |t|
+  puts "running unit tests!"
+  ruby "test/customer_repository_test.rb"
+  ruby "test/customer_test.rb"
+  ruby "test/file_loader_test.rb"
+  ruby "test/invoice_item_repository_test.rb"
+  ruby "test/invoice_test.rb"
+  ruby "test/item_repository_test.rb"
+  ruby "test/invoice_item_test.rb"
+  ruby "test/item_test.rb"
+  ruby "test/invoice_repository_test.rb"
+  ruby "test/merchant_repository_test.rb"
+  ruby "test/merchant_test.rb"
+  ruby "test/sales_engine_test.rb"
+  ruby "test/sales_analyst_test.rb"
+  ruby "test/invoice_item_test.rb"
+  ruby "test/transaction_repository_test.rb"
+  ruby "test/transaction_test.rb"
+end
+
 namespace :sanitation do
   desc "Check line lengths & whitespace with Cane"
   task :lines do
