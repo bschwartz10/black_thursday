@@ -22,27 +22,20 @@ class Merchant
   end
 
   def customers
-    customer_ids = invoices.map do |invoice|
-      invoice.customer_id
-    end
+    customer_ids = invoices.map { |invoice| invoice.customer_id }
     customer_ids.map { |id| parent.parent.customers.find_by_id(id) }.uniq
   end
 
   def revenue
-    # merchant_invoices is an array of invoice objects
     merchant_invoices = parent.parent.invoices.find_all_by_merchant_id(id)
     paid_invoices = merchant_invoices.select do |invoice|
       invoice.is_paid_in_full?
     end
-    paid_invoices.reduce(0) do |sum, invoice|
-      sum + invoice.total
-    end
+    paid_invoices.reduce(0) { |sum, invoice| sum + invoice.total }
   end
 
   def has_pending_invoices?
-    invoices.any? do |invoice|
-      !invoice.is_paid_in_full?
-    end
+    invoices.any? { |invoice| !invoice.is_paid_in_full? }
   end
 
   def has_one_item?
