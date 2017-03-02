@@ -97,26 +97,22 @@ class SalesAnalystTest < Minitest::Test
   end
 
   def test_top_revenue_earners
-    skip
-    # assert_equal 10, @sa.top_revenue_earners(10).count
-    # assert_equal 12334634, @sa.top_revenue_earners(10).first.id
-    assert_equal 12335747, @sa.top_revenue_earners().last.id
+    assert_equal 10, @sa.top_revenue_earners(10).count
+    assert_equal 12334634, @sa.top_revenue_earners(10).first.id
+    assert_equal 12334159, @sa.top_revenue_earners().last.id
 
   end
 
   def test_merchants_with_pending_invoices
-    skip
     assert_equal 467, @sa.merchants_with_pending_invoices.count
   end
 
   def test_merchants_ranked_by_revenue
-    skip
     assert_equal 12334634, @sa.merchants_ranked_by_revenue.first.id
     assert_equal 12336175, @sa.merchants_ranked_by_revenue.last.id
   end
 
   def test_merchants_with_only_one_item
-    skip
     assert_equal 243, @sa.merchants_with_only_one_item.count
   end
 

@@ -163,8 +163,6 @@ class SalesAnalyst
       invoice_item.quantity
     end
 
-    # go through invoice_items
-    # to find any where invoice_items.quantity = top_seller.quantity
     top_invoices = invoice_merchant_items.flatten.select do |invoice_item|
       top_seller_invoice.quantity == invoice_item.quantity
     end

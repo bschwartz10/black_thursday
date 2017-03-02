@@ -7,21 +7,24 @@ class MerchantTest < Minitest::Test
 
   def setup
     super
+    @m = Merchant.new({
+      id:"12334105",
+      name:"Shopin1901" ,
+      created_at:"2010-12-10" ,
+      updated_at:"2011-12-04"
+      })
   end
 
   def test_it_exists
-    m = Merchant.new({:id => 5, :name => "Turing School"})
-    assert_instance_of Merchant, m
+    assert_instance_of Merchant, @m
   end
 
   def test_merchant_id
-    m = Merchant.new({:id => 5, :name => "Turing School"})
-    assert_equal 5, m.id
+    assert_equal 12334105, @m.id
   end
 
   def test_merchant_name
-    m = Merchant.new({:id => 5, :name => "Turing School"})
-    assert_equal "Turing School", m.name
+    assert_equal "Shopin1901", @m.name
   end
 
   def test_find_items_by_merchant_id
