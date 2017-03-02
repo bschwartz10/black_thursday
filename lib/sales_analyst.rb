@@ -12,7 +12,7 @@ class SalesAnalyst
               :customers
 
   def initialize(sales_engine)
-    @sales_engine = sales_engine
+    @sales_engine ||= sales_engine
     @merchants ||= sales_engine.merchants
     @items ||= sales_engine.items
     @invoices ||= sales_engine.invoices
