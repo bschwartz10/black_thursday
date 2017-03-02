@@ -5,7 +5,7 @@ class TransactionRepository
 
   def initialize(transaction_data, parent = nil )
     @transaction_data = transaction_data
-    @all = transaction_data.map { |row| Transaction.new(row, self) }
+    @all ||= transaction_data.map { |row| Transaction.new(row, self) }
     @parent = parent
   end
 
@@ -24,7 +24,6 @@ class TransactionRepository
   def find_all_by_result(result)
     all.find_all { |transaction| transaction.result == result}
   end
-
 
   def inspect
     instance.nil? ? nil : "#<#{self.class} #{instance.size} rows>"

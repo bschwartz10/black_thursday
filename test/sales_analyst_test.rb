@@ -90,7 +90,7 @@ class SalesAnalystTest < Minitest::Test
   end
 
   def test_revenue_by_merchant
-      assert_equal 0.1263009e6, @sa.revenue_by_merchant(12335938)
+    assert_equal 0.1263009e6, @sa.revenue_by_merchant(12335938)
   end
 
   def test_top_revenue_earners

@@ -54,4 +54,17 @@ class MerchantTest < Minitest::Test
     merchant = @se.merchants.find_by_id(12335938)
     assert_equal 0.1263009e6, merchant.revenue
   end
+
+  def test_has_pending_invoices?
+    merchant = @se.merchants.find_by_id(12335938)
+    assert_equal true, merchant.has_pending_invoices?
+  end
+
+  def test_has_one_item?
+    merchant_1 = @se.merchants.find_by_id(12335938)
+    merchant_2 = @se.merchants.find_by_id(12334112)
+    assert_equal false, merchant_1.has_one_item?
+    assert_equal true, merchant_2.has_one_item?
+
+  end
 end

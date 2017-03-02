@@ -44,12 +44,7 @@ class ItemRepositoryTest < Minitest::Test
     assert_equal 48, @ir.find_all_by_price(30).count
     assert_equal [], @ir.find_all_by_price(9898989)
     refute @ir.find_all_by_price(9898989).first
-
-    # price = BigDecimal.new(300)
-    # assert_equal 5, @se.items.find_all_by_price(price)
   end
-
-  ### This is as far on the spec as I got for item_repository
 
   def test_find_all_by_price_in_range
     assert_equal 50, @ir.find_all_by_price_in_range(11..12.50).count

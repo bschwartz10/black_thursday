@@ -5,7 +5,7 @@ class ItemRepository
 
   def initialize(item_data, parent = nil)
     @item_data = item_data
-    @all = item_data.map { |row| Item.new(row, self) }
+    @all ||= item_data.map { |row| Item.new(row, self) }
     @parent = parent
   end
 
