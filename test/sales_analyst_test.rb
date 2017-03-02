@@ -126,4 +126,11 @@ class SalesAnalystTest < Minitest::Test
     assert_equal 18, @sa.merchants_with_only_one_item_registered_in_month("June").count
   end
 
+  def test_most_sold_item_for_merchant
+    # result1 = @sa.most_sold_item_for_merchant(12334189)
+    result2 = @sa.most_sold_item_for_merchant(12337105)
+    # assert_equal "Adult Princess Leia Hat", result1.first.name
+    assert_equal 4, result2.count
+  end
+
 end
