@@ -4,7 +4,6 @@ require './lib/sales_analyst'
 class SalesAnalystTest < Minitest::Test
   include SalesEngineTestSetup
 
-
   def setup
     super
     @sa = SalesAnalyst.new(@se)
@@ -127,10 +126,16 @@ class SalesAnalystTest < Minitest::Test
   end
 
   def test_most_sold_item_for_merchant
-    # result1 = @sa.most_sold_item_for_merchant(12334189)
+    result1 = @sa.most_sold_item_for_merchant(12334189)
     result2 = @sa.most_sold_item_for_merchant(12337105)
-    # assert_equal "Adult Princess Leia Hat", result1.first.name
+    assert_equal "Adult Princess Leia Hat", result1.first.name
     assert_equal 4, result2.count
+  end
+
+  def test_best_item_for_merchant
+    merchant_id = 12334189
+    expected = @sa.best_item_for_merchant(merchant_id)
+    assert_equal 263516130, expected.id
   end
 
 end
