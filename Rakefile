@@ -1,11 +1,5 @@
 task :default => [:unit_test]
 
-# Rake::TestTask.new do |t|
-#     t.test_files = FileList['tests/**/*_test.rb'] #my directory to tests is 'tests' you can change at you will
-# end
-# desc "Run tests"
-
-
 task :unit_test do |t|
   puts "running unit tests!"
   ruby "test/customer_repository_test.rb"
@@ -24,11 +18,6 @@ task :unit_test do |t|
   ruby "test/invoice_item_test.rb"
   ruby "test/transaction_repository_test.rb"
   ruby "test/transaction_test.rb"
-end
-
-task :integration_test do
-  puts "running integration tests!"
-  ruby 'test/integration/*_test.rb'
 end
 
 namespace :sanitation do
