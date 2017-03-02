@@ -5,7 +5,7 @@ class InvoiceRepository
 
   def initialize(invoice_data, parent = nil)
     @invoice_data = invoice_data
-    @all = invoice_data.map { |row| Invoice.new(row, self) }
+    @all ||= invoice_data.map { |row| Invoice.new(row, self) }
     @parent = parent
   end
 

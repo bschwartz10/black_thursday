@@ -13,12 +13,12 @@ class SalesAnalyst
 
   def initialize(sales_engine)
     @sales_engine = sales_engine
-    @merchants = sales_engine.merchants
-    @items = sales_engine.items
-    @invoices = sales_engine.invoices
-    @invoice_items = sales_engine.invoice_items
-    @transactions = sales_engine.transactions
-    @customers = sales_engine.customers
+    @merchants ||= sales_engine.merchants
+    @items ||= sales_engine.items
+    @invoices ||= sales_engine.invoices
+    @invoice_items ||= sales_engine.invoice_items
+    @transactions ||= sales_engine.transactions
+    @customers ||= sales_engine.customers
   end
 
   def average_items_per_merchant
@@ -65,8 +65,6 @@ class SalesAnalyst
       item.unit_price > min_price
     end
   end
-
-# Inovice Methods
 
   def average_invoices_per_merchant
     average(invoices.all.count, merchants.all.count)

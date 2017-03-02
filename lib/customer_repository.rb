@@ -5,7 +5,7 @@ class CustomerRepository
 
   def initialize(customer_data, parent = nil)
     @customer_data = customer_data
-    @all = customer_data.map { |row| Customer.new(row, self)}
+    @all ||= customer_data.map { |row| Customer.new(row, self)}
     @parent = parent
   end
 

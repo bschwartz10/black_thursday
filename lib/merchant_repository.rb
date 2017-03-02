@@ -5,7 +5,7 @@ class MerchantRepository
 
   def initialize(merchant_data, parent = nil )
     @merchant_data = merchant_data
-    @all = merchant_data.map { |row| Merchant.new(row, self) }
+    @all ||= merchant_data.map { |row| Merchant.new(row, self) }
     @parent = parent
   end
 
