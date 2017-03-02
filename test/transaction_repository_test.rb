@@ -3,11 +3,11 @@ require './lib/transaction_repository'
 require './lib/sales_engine'
 
 class TransactionRepositoryTest < Minitest::Test
-  include TestSetup
+  include SalesEngineTestSetup
 
     def setup
-      @se = @@se
-      @tr = @@se.transactions
+      super
+      @tr = @se.transactions
     end
 
     def test_it_exists
