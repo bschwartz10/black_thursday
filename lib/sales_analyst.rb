@@ -21,8 +21,6 @@ class SalesAnalyst
     @customers = sales_engine.customers
   end
 
-  # merchant and item methods
-
   def average_items_per_merchant
     average(items.all.count, merchants.all.count)
   end
@@ -33,7 +31,8 @@ class SalesAnalyst
   end
 
   def merchants_with_high_item_count
-    min_item_count = average_items_per_merchant + average_items_per_merchant_standard_deviation
+    min_item_count = average_items_per_merchant +
+        average_items_per_merchant_standard_deviation
     merchants.all.find_all { |merchant| merchant.items.count > min_item_count }
   end
 
@@ -44,7 +43,10 @@ class SalesAnalyst
   end
 
   def average_average_price_per_merchant
-    (merchants.all.inject(0) { |sum, merchant| sum + average_item_price_for_merchant(merchant.id) } / merchants.all.count).round(2)
+    price = merchants.all.inject(0) do |sum, merchant|
+      sum + average_item_price_for_merchant(merchant.id)
+    end
+    (price / merchants.all.count).round(2)
   end
 
   def average_price_per_item_standard_deviation
@@ -54,7 +56,10 @@ class SalesAnalyst
 
   def golden_items
     std_dev = average_price_per_item_standard_deviation
-    mean = items.all.inject(0) {|sum, object| sum + object.unit_price_to_dollars } / sales_engine.items.all.count
+    sum_price = items.all.inject(0) do |sum, object|
+      sum + object.unit_price_to_dollars
+    end
+    mean = sum_price / sales_engine.items.all.count
     min_price = (std_dev * 2 ) + mean
     sales_engine.items.all.find_all do |item|
       item.unit_price > min_price
@@ -68,7 +73,9 @@ class SalesAnalyst
   end
 
   def average_invoices_per_merchant_standard_deviation
-    invoices_per_merchant = merchants.all.map { |merchant| merchant.invoices.count }
+    invoices_per_merchant = merchants.all.map do |merchant|
+      merchant.invoices.count
+    end
     std_dev_from_array(invoices_per_merchant)
   end
 
@@ -104,7 +111,8 @@ class SalesAnalyst
   end
 
   def invoice_status(status)
-    percentage = (invoices.find_all_by_status(status).count.to_f / invoices.all.count.to_f) * 100
+    invoice_status_count = invoices.find_all_by_status(status).count.to_f
+    percentage = (invoice_status_count / invoices.all.count.to_f) * 100
     percentage.round(2)
   end
 

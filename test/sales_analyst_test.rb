@@ -9,7 +9,6 @@ class SalesAnalystTest < Minitest::Test
     @sa = SalesAnalyst.new(@se)
   end
 
-
   def test_it_exists
     assert_instance_of SalesAnalyst, @sa
   end
@@ -57,13 +56,11 @@ class SalesAnalystTest < Minitest::Test
 
   def test_average_invoices_per_merchant_standard_deviation
     results = @sa.average_invoices_per_merchant_standard_deviation
-
     assert_equal 3.29, results
   end
 
   def test_top_merchants_by_invoice_count
     result = @sa.top_merchants_by_invoice_count
-
     assert_instance_of Array, result
     assert_equal "jejum", result.first.name
     assert_equal 12, result.count
@@ -100,7 +97,6 @@ class SalesAnalystTest < Minitest::Test
     assert_equal 10, @sa.top_revenue_earners(10).count
     assert_equal 12334634, @sa.top_revenue_earners(10).first.id
     assert_equal 12334159, @sa.top_revenue_earners().last.id
-
   end
 
   def test_merchants_with_pending_invoices

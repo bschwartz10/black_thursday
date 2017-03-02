@@ -19,7 +19,9 @@ class ItemRepository
 
 
   def find_all_with_description(search_term)
-    all.find_all { |object| object.description.downcase.include?(search_term.downcase) }
+    all.find_all do |object|
+      object.description.downcase.include?(search_term.downcase)
+    end
   end
 
   def find_all_by_price(price)

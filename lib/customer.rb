@@ -6,7 +6,6 @@ class Customer
               :updated_at,
               :parent
 
-
   def initialize(data, parent = nil)
     @id = data[:id].to_i
     @first_name = data[:first_name]

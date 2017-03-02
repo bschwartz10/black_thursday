@@ -16,12 +16,18 @@ class SalesEngine
               :customers
 
   def initialize(file_paths)
-    @items = ItemRepository.new(FileLoader.load_csv(file_paths[:items]), self)
-    @merchants = MerchantRepository.new(FileLoader.load_csv(file_paths[:merchants]), self)
-    @invoices = InvoiceRepository.new(FileLoader.load_csv(file_paths[:invoices]), self)
-    @invoice_items = InvoiceItemRepository.new(FileLoader.load_csv(file_paths[:invoice_items]), self)
-    @transactions = TransactionRepository.new(FileLoader.load_csv(file_paths[:transactions]), self)
-    @customers = CustomerRepository.new(FileLoader.load_csv(file_paths[:customers]), self)
+    @items = ItemRepository.new(
+      FileLoader.load_csv(file_paths[:items]), self)
+    @merchants = MerchantRepository.new(
+      FileLoader.load_csv(file_paths[:merchants]), self)
+    @invoices = InvoiceRepository.new(
+      FileLoader.load_csv(file_paths[:invoices]), self)
+    @invoice_items = InvoiceItemRepository.new(
+      FileLoader.load_csv(file_paths[:invoice_items]), self)
+    @transactions = TransactionRepository.new(
+      FileLoader.load_csv(file_paths[:transactions]), self)
+    @customers = CustomerRepository.new(
+      FileLoader.load_csv(file_paths[:customers]), self)
   end
 
   def self.from_csv(file_paths)
